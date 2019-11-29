@@ -9,8 +9,8 @@ get '/' do
 end
 
 get '/feed/session-series/' do
-  base_url = 'https://www.example.com/feed/session-series/'
-  change_number = params['afterChangeNumber'] || 0
+  base_url = request.base_url+request.path
+  change_number = params['afterChangeNumber'].to_i || 0
   per_page = 3
 
   page_items_data = data_for_page(change_number, per_page).map do |raw_item|
