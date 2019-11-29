@@ -5,7 +5,7 @@ require 'sinatra/reloader' if development?
 require 'openactive'
 
 get '/' do
-  "Hello World!"
+  "Hello World! #{request.base_url}/feed/session-series/ for a feed"
 end
 
 get '/feed/session-series/' do
