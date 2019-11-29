@@ -20,11 +20,18 @@ private
 
 def data_for_page(change_number, per_page)
   all_data
+    .select { |item| item["modified"] > change_number }
+    .sort do |item1, item2|
+      if item1["modified"] == item2["modified"]
+        item1["id"] <=> item2["id"]
+      else
+        item1["modified"] <=> item2["modified"]
+      end
+    end
+    .take(per_page)
 end
 
-
 def all_data
-  return {hello: 'world'}
   JSON.parse(
     File.read(
       File.join(__dir__, 'session-series-feed-items.json')
