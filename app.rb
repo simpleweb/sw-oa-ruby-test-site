@@ -2,18 +2,43 @@ require 'sinatra'
 require 'sinatra/json'
 require 'sinatra/reloader' if development?
 
+require 'openactive'
+
 get '/' do
   "Hello World!"
 end
 
 get '/feed/session-series/' do
-  # base_url = ???
+  base_url = 'https://www.example.com/feed/session-series/'
   change_number = params['afterChangeNumber'] || 0
   per_page = 3
 
-  page_items_data = data_for_page(change_number, per_page)
+  page_items_data = data_for_page(change_number, per_page).map do |raw_item|
+    if raw_item.has_key?('data')
+      raw_item['data'] = OpenActive::Models::SessionSeries.deserialize(JSON.dump(raw_item['data']))
+    end
 
-  json page_items_data
+    raw_item
+  end
+
+  page_items = page_items_data.map do |raw_item|
+    args = {
+      Id:  raw_item["id"],
+      State: raw_item["state"],
+      Kind: raw_item["kind"],
+      Modified: raw_item["modified"],
+    }
+    args[:Data] = raw_item["data"] if args[:State] == "updated"
+
+    OpenActive::Rpde::RpdeItem.new(**args)
+  end
+
+  # page = RpdeBody::createFromNextChangeNumber($baseUrl, $changeNumber, pageItems);
+
+  page = OpenActive::Rpde::RpdeBody.create_from_next_change_number(
+    base_url, change_number, page_items)
+
+  json page
 end
 
 private
