@@ -9,4 +9,5 @@ gem "sinatra"
 gem "sinatra-contrib"
 gem "thin"
 
-gem "openactive",  github: "openactive/models-ruby", require: "openactive"
+gem "openactive", github: "openactive/models-ruby", require: "openactive"
+gem "openactive-dataset", github: "openactive/dataset-site-template-ruby", require: "openactive/dataset", ref: "dataset-implementation"

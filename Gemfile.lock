@@ -1,6 +1,16 @@
 GIT
+  remote: https://github.com/openactive/dataset-site-template-ruby
+  revision: 7696dac97fd8283e26ac8cb14c023dcb61ea6360
+  ref: dataset-implementation
+  specs:
+    openactive-dataset (0.1.0)
+      mustache
+      openactive
+      typesafe_enum
+
+GIT
   remote: https://github.com/openactive/models-ruby
-  revision: fabdf8b9707ca01b8cbc17a8a3c52fc54fd9423a
+  revision: 714c143733a5c9770cfef9534543fb0309aaa0d2
   specs:
     openactive (0.1.0)
       activesupport
@@ -23,6 +33,7 @@ GEM
       concurrent-ruby (~> 1.0)
     minitest (5.13.0)
     multi_json (1.14.1)
+    mustache (1.1.0)
     mustermann (1.0.3)
     rack (2.0.7)
     rack-protection (2.0.7)
@@ -55,6 +66,7 @@ PLATFORMS
 
 DEPENDENCIES
   openactive!
+  openactive-dataset!
   sinatra
   sinatra-contrib
   thin
