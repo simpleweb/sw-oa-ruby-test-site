@@ -5,10 +5,10 @@ require 'sinatra/reloader' if development?
 require 'openactive'
 
 get '/' do
-  "Hello World! #{request.base_url}/feed/session-series/ for a feed"
+  "Hello World! #{request.base_url}/feed/session-series for a feed"
 end
 
-get '/feed/session-series/' do
+get '/feed/session-series' do
   base_url = request.base_url+request.path
   change_number = params['afterChangeNumber'].to_i || 0
   per_page = 3
