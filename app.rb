@@ -8,6 +8,8 @@ get '/' do
   "Hello World! #{request.base_url}/feed/session-series for a feed"
 end
 
+disable :strict_paths
+
 get '/feed/session-series' do
   base_url = request.base_url+request.path
   change_number = params['afterChangeNumber'].to_i || 0
