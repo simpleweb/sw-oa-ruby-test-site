@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/openactive/dataset-site-template-ruby
-  revision: 7696dac97fd8283e26ac8cb14c023dcb61ea6360
+  revision: 13468706238d146a4a4423d628923fba56d37997
   ref: dataset-implementation
   specs:
     openactive-dataset (0.1.0)
@@ -10,7 +10,7 @@ GIT
 
 GIT
   remote: https://github.com/openactive/models-ruby
-  revision: 714c143733a5c9770cfef9534543fb0309aaa0d2
+  revision: 6bd9dfd36c97135c750310aa7003d85f7d139ce1
   specs:
     openactive (0.1.0)
       activesupport
@@ -59,7 +59,7 @@ GEM
     typesafe_enum (0.1.9)
     tzinfo (1.2.5)
       thread_safe (~> 0.1)
-    zeitwerk (2.2.1)
+    zeitwerk (2.2.2)
 
 PLATFORMS
   ruby
