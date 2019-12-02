@@ -3,14 +3,14 @@ require 'sinatra/json'
 require 'sinatra/reloader' if development?
 
 require 'openactive'
-require 'openactive/dataset'
+require 'openactive/dataset_site'
 
 get '/' do
   feed_types = [
-    OpenActive::Dataset::FeedType::SESSION_SERIES,
+    OpenActive::DatasetSite::FeedType::SESSION_SERIES,
   ]
 
-  settings = OpenActive::Dataset::Settings.new(
+  settings = OpenActive::DatasetSite::Settings.new(
     open_data_feed_base_url: request.base_url + "/feed/",
     dataset_site_url: request.base_url,
     dataset_discussion_url: "https://github.com/simpleweb/sw-oa-ruby-test-site",
@@ -28,7 +28,7 @@ get '/' do
     data_feed_types: feed_types,
   )
 
-  renderer = OpenActive::Dataset::TemplateRenderer.new(settings)
+  renderer = OpenActive::DatasetSite::TemplateRenderer.new(settings)
 
   renderer.render
 end

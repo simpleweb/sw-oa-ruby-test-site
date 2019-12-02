@@ -1,9 +1,9 @@
 GIT
   remote: https://github.com/openactive/dataset-site-template-ruby
-  revision: 13468706238d146a4a4423d628923fba56d37997
-  ref: dataset-implementation
+  revision: c95db931b71fa8c04c8b6550153af38b1095e250
+  ref: master
   specs:
-    openactive-dataset (0.1.0)
+    openactive-dataset_site (0.1.0)
       mustache
       openactive
       typesafe_enum
@@ -66,7 +66,7 @@ PLATFORMS
 
 DEPENDENCIES
   openactive!
-  openactive-dataset!
+  openactive-dataset_site!
   sinatra
   sinatra-contrib
   thin
