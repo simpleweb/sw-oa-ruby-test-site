@@ -42,7 +42,7 @@ get '/feed/session-series' do
 
   page_items_data = data_for_page(change_number, per_page).map do |raw_item|
     if raw_item.has_key?('data')
-      raw_item['data'] = OpenActive::Models::SessionSeries.deserialize(JSON.dump(raw_item['data']))
+      raw_item['data'] = build_session_series(raw_item['data'])
     end
 
     raw_item
@@ -69,6 +69,61 @@ get '/feed/session-series' do
 end
 
 private
+
+def build_session_series(data)
+  address = OpenActive::Models::PostalAddress.new(
+    street_address: data['location']['address']['streetAddress'],
+    address_locality: data['location']['address']['addressLocality'],
+    address_region: data['location']['address']['addressRegion'],
+    postal_code: data['location']['address']['postalCode'],
+    address_country: data['location']['address']['addressCountry'],
+  )
+  location = OpenActive::Models::Place.new(
+    id: data['location']['id'],
+    name: data['location']['name'],
+    address: address,
+  )
+  activities = data['activity'].map do |activity_data|
+    OpenActive::Models::Concept.new(
+      id: activity_data['id'],
+      in_scheme: activity_data['inScheme'],
+      pref_label: activity_data['prefLabel']
+    )
+  end
+  event_schedule = data['eventSchedule'].map do |event_schedule_data|
+    OpenActive::Models::PartialSchedule.new(
+      repeat_frequency: event_schedule_data['repeatFrequency'],
+      start_time: event_schedule_data['startTime'],
+      end_time: event_schedule_data['endTime'],
+      by_day: event_schedule_data['byDay'],
+      # by_day: event_schedule_data['byDay'].map { |d| DayOfWeek.find_by_value(d) },
+    )
+  end
+  organizer = OpenActive::Models::Organization.new(
+    id: data['organizer']['id'],
+    name: data['organizer']['name'],
+  )
+  offers = data['offers'].map do |offer_data|
+    puts offer_data
+    OpenActive::Models::Offer.new(
+      id: offer_data['id'],
+      price: offer_data['price'],
+      price_currency: offer_data['price_currency'],
+    )
+  end
+
+  OpenActive::Models::SessionSeries.new(
+    name: data['name'],
+    start_date: data['startDate'],
+    end_date: data['endDate'],
+    duration: data['duration'],
+    location: location,
+    activity: activities,
+    event_schedule: event_schedule,
+    organizer: organizer,
+    offers: offers,
+  )
+end
 
 def data_for_page(change_number, per_page)
   all_data
