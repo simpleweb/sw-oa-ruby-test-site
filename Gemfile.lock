@@ -8,14 +8,6 @@ GIT
       openactive
       typesafe_enum
 
-GIT
-  remote: https://github.com/openactive/models-ruby
-  revision: 42d554a8e538111dd180bc54b0b2afbfd8b194a6
-  specs:
-    openactive (0.1.0)
-      activesupport
-      typesafe_enum
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -35,6 +27,9 @@ GEM
     multi_json (1.14.1)
     mustache (1.1.0)
     mustermann (1.0.3)
+    openactive (0.1.0.rc1)
+      activesupport
+      typesafe_enum
     rack (2.0.7)
     rack-protection (2.0.7)
       rack
@@ -65,7 +60,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  openactive!
+  openactive (~> 0.1.0.rc1)
   openactive-dataset_site!
   sinatra
   sinatra-contrib
