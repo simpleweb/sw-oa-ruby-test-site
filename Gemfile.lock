@@ -10,7 +10,7 @@ GIT
 
 GIT
   remote: https://github.com/openactive/models-ruby
-  revision: 6bd9dfd36c97135c750310aa7003d85f7d139ce1
+  revision: 42d554a8e538111dd180bc54b0b2afbfd8b194a6
   specs:
     openactive (0.1.0)
       activesupport
