@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/openactive/dataset-site-template-ruby
-  revision: 698ac11953bddd09d7d7560d666c6326a21a8c3b
+  revision: 45f0de19edcc4c4bcb71d3cfdcd87b675480e1d4
   ref: master
   specs:
     openactive-dataset_site (0.1.0)
