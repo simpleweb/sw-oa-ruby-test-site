@@ -1,24 +1,24 @@
 GIT
   remote: https://github.com/openactive/dataset-site-template-ruby
-  revision: 759b6d7d627683341f76b35a57fe56db9b57c0b9
+  revision: 6c24d27f88e8a8c8be31cd62fca988d8b1ba84f9
   specs:
-    openactive-dataset_site (0.1.0)
+    openactive-dataset_site (0.1.1)
       mustache
       openactive
       typesafe_enum
 
 GIT
   remote: https://github.com/openactive/models-ruby
-  revision: fc8345468ea454fe84106259291385ad13e364db
+  revision: f288e2e3b5b0c4d486b7493e676d59f660245181
   specs:
-    openactive (0.1.0)
+    openactive (0.1.2)
       activesupport
       typesafe_enum
 
 GEM
   remote: https://rubygems.org/
   specs:
-    activesupport (6.0.1)
+    activesupport (6.0.2.1)
       concurrent-ruby (~> 1.0, >= 1.0.2)
       i18n (>= 0.7, < 2)
       minitest (~> 5.1)
@@ -33,21 +33,23 @@ GEM
     minitest (5.13.0)
     multi_json (1.14.1)
     mustache (1.1.1)
-    mustermann (1.0.3)
-    rack (2.0.7)
-    rack-protection (2.0.7)
+    mustermann (1.1.1)
+      ruby2_keywords (~> 0.0.1)
+    rack (2.0.8)
+    rack-protection (2.0.8.1)
       rack
-    sinatra (2.0.7)
+    ruby2_keywords (0.0.1)
+    sinatra (2.0.8.1)
       mustermann (~> 1.0)
       rack (~> 2.0)
-      rack-protection (= 2.0.7)
+      rack-protection (= 2.0.8.1)
       tilt (~> 2.0)
-    sinatra-contrib (2.0.7)
+    sinatra-contrib (2.0.8.1)
       backports (>= 2.8.2)
       multi_json
       mustermann (~> 1.0)
-      rack-protection (= 2.0.7)
-      sinatra (= 2.0.7)
+      rack-protection (= 2.0.8.1)
+      sinatra (= 2.0.8.1)
       tilt (~> 2.0)
     thin (1.7.2)
       daemons (~> 1.0, >= 1.0.9)
@@ -56,7 +58,7 @@ GEM
     thread_safe (0.3.6)
     tilt (2.0.10)
     typesafe_enum (0.1.9)
-    tzinfo (1.2.5)
+    tzinfo (1.2.6)
       thread_safe (~> 0.1)
     zeitwerk (2.2.2)
 
